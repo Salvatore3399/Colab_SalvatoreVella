@@ -1,0 +1,11 @@
+L=["arance", "fragole", "Sasa","a"]
+def trova(lista, l):
+  trovate=[]
+  for lettere in lista:
+    if lettere.lower().startswith(l):
+      trovate.append(lettere)
+  return trovate
+
+print(f"Elementi che iniziano con 'a': {trova(L, 'a')}")
+print(f"Elementi che iniziano con 'f': {trova(L, 'f')}")
+print(f"Elementi che iniziano con 'z': {trova(L, 'z')}")
