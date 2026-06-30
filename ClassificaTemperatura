@@ -1,0 +1,14 @@
+def classifica_temperatura(t):
+  if t < 10:
+    return "freddo"
+  elif t > 25:
+    return "caldo"
+  else:
+    return "mite"
+
+temp = [-5, 0, 15, 30, 42]
+classificazioni = []
+for t in temp:
+  classificazioni.append(f"La temperatura {t} è {classifica_temperatura(t)}")
+
+print(", ".join(classificazioni))
