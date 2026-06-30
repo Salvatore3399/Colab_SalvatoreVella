@@ -1,0 +1,32 @@
+def funbzione_decoratore(func):
+
+  def wrapper(*args, **kwargs):
+    print("--Inizio esecuzione--")
+    func(*args, **kwargs)
+    print("--Fine esecuzione--")
+  return wrapper
+
+@funbzione_decoratore
+def albero(colore):
+  print(f"Albero di colore: {colore}")
+
+@funbzione_decoratore
+def fiore(nome, colore="rosso"):
+  print(f"Fiore: {nome}, colore: {colore}")
+
+@funbzione_decoratore
+def saluta():
+  print("Ciao a tutti")
+
+@funbzione_decoratore
+def albero2(colore):
+  print(f"L'albero ha le foglie {colore}")
+  return colore.upper()
+
+risultato=albero("nero")
+print(risultato)
+
+albero("rosso")
+fiore("rosa")
+saluta()
+albero2("verde")
