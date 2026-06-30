@@ -1,0 +1,10 @@
+class Libro():
+  def __init__(self,pagine,titolo):
+    self.pagine=pagine
+    self.titolo=titolo
+
+  def __len__(self):
+    return self.pagine
+
+Libro1=Libro(600,"Toyboy")
+print (len(Libro1))
