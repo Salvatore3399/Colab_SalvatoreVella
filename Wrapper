@@ -1,0 +1,13 @@
+from functools import wraps
+def info(fn):
+  @wraps(fn)
+  def wrapper(*args, **kwargs):
+    print(f"Stai eseguendo la funzione: (fn__name__)")
+    print(f"Documentazione è la seguente (fn__doc__)")
+    return fn(*args, **kwargs)
+  return wrapper
+
+#info
+def funk():
+  pass
+print(funk.__name__)
