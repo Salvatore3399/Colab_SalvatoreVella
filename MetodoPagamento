@@ -1,0 +1,63 @@
+class MetodoPagamento:
+  def elabora(self, importo: float):
+    raise NotImplementedError(
+        "Il metodo 'elabora' deve essere implementato dalle sottoclassi"
+    )
+
+  def ricevuta(self, importo: float):
+    raise NotImplementedError(
+        "Il metodo 'ricevuta' deve essere implementato dalle sottoclassi"
+    )
+
+class CartaCredito(MetodoPagamento):
+  def __init__(self, numero_carta: str):
+    self.numero_carta = numero_carta
+
+  def elabora(self, importo: float):
+    print(f"Elaborazione pagamento con Carta di Credito {self.numero_carta[-4:]} per un importo di {importo:.2f} Euro.")
+
+  def ricevuta(self, importo: float):
+    print(f"Ricevuta di pagamento con Carta di Credito {self.numero_carta[-4:]} di {importo:.2f} Euro.")
+
+class PayPal(MetodoPagamento):
+  def __init__(self, email: str):
+    self.email = email
+
+  def elabora(self, importo: float):
+    print(f"Elaborazione pagamento con PayPal per l'email {self.email} per un importo di {importo:.2f} Euro.")
+
+  def ricevuta(self, importo: float):
+    print(f"Ricevuta di pagamento con PayPal per l'email {self.email} di {importo:.2f} Euro.")
+
+class Bonifico(MetodoPagamento):
+  def __init__(self, iban: str):
+    self.iban = iban
+
+  def elabora(self, importo: float):
+    print(f"Elaborazione pagamento con Bonifico Bancario su IBAN {self.iban} per un importo di {importo:.2f} Euro.")
+
+  def ricevuta(self, importo: float):
+    print(f"Ricevuta di pagamento con Bonifico Bancario su IBAN {self.iban} di {importo:.2f} Euro. Si prega di attendere la conferma bancaria.")
+
+def processa_ordini(ordini: list):
+  print("\n--- Elaborazione degli ordini ---")
+  for metodo_pagamento, importo in ordini:
+    metodo_pagamento.elabora(importo)
+    metodo_pagamento.ricevuta(importo)
+  print("--- Elaborazione ordini completata ---")
+
+# Creazione di nuove istanze per il test
+visa_card = CartaCredito("4111-2222-3333-4444")
+apple_pay = PayPal("cliente2@shop.com")
+united_bank = Bonifico("DE89370400440532013000")
+
+# Lista di ordini da elaborare
+lista_ordini = [
+    (visa_card, 55.99),
+    (apple_pay, 120.50),
+    (united_bank, 300.00),
+    (visa_card, 25.00)
+]
+
+# Processa gli ordini
+processa_ordini(lista_ordini)
