@@ -1,0 +1,20 @@
+def make_counter():
+  count=0
+  def increment():
+    nonlocal count
+    count+=1
+    return count
+
+  def reset():
+    nonlocal count
+    count=0
+
+  return increment,reset
+inc, rst=make_counter()
+print(inc())
+print(inc())
+print(inc())
+rst()
+print(inc())
+rst()
+print(inc())
