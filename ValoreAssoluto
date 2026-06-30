@@ -1,0 +1,7 @@
+def valore_assoluto(n):
+  if n<0:
+     n=-n
+  return n
+
+print(valore_assoluto(-5))
+print(valore_assoluto(10))
