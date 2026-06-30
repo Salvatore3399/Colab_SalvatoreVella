@@ -1,0 +1,6 @@
+class Auto:
+  def __init__(self,marca,km=0):
+    self.marca=marca
+    self.km=km
+a=Auto('Fiat', 15000)
+print(a.km)
