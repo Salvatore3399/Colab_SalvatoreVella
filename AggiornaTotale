@@ -1,0 +1,7 @@
+#totale = 100
+def aggiorna():
+  global totale  # Dichiara che stai usando la variabile globale 'totale'
+  totale+=50
+  return totale
+print(aggiorna())
+print(totale) # Stampa il valore aggiornato della variabile globale
