@@ -1,0 +1,11 @@
+def giorni_mese(mese):
+  if mese in (1,3,5,7,8,10,12):
+    return ("Il mese selezionato ha 31 giorni")
+  elif mese in (4,6,9,11):
+    return ("Il mese selezionato ha 30 giorni")
+  elif mese == 2:
+    return ("Febbraio ha 28 giorni e 29 negli anni bisestili")
+  else:
+    return ("ERRORE: Inserisci un mese tra 1 e 12")
+
+print(giorni_mese())
