@@ -1,0 +1,10 @@
+def media_lista(n):
+  if numeri<1:
+    return 0
+  somma=0
+  for n in n:
+    somma+=n
+  return somma/len(n)
+
+lista=[1,2,3,4,5]
+print(f"La media della lista {lista} è: {media_lista(lista)}")
