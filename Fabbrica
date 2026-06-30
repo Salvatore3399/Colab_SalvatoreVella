@@ -1,0 +1,10 @@
+class Fabbrica():
+  contatore=0
+  def __init__(self, nome):
+    self.nome=nome
+    Fabbrica.contatore += 1
+
+F1=Fabbrica("Border King")
+print(F1.nome, Fabbrica.contatore)
+F2=Fabbrica("McDonaldtrump")
+print(F2.nome, Fabbrica.contatore)
