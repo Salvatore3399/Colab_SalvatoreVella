@@ -1,0 +1,26 @@
+class Temperatura:
+  def __init__(self, celsius: float):
+    self._celsius = celsius  # Store celsius internally with a leading underscore
+
+  @property
+  def celsius(self) -> float:
+    return self._celsius
+
+  @celsius.setter
+  def celsius(self, value: float):
+    if not isinstance(value, (int, float)):
+      raise TypeError("Celsius deve essere un numero.")
+    self._celsius = value
+
+  @property
+  def to_fahrenheit(self) -> float:
+    return (self.celsius * 9/5) + 32 # Use the celsius property
+
+
+C1 = Temperatura(22)
+F1 = C1.to_fahrenheit
+print(F1)
+
+# Demonstrate the setter
+C1.celsius = 22
+print(f"New Celsius value: {C1.celsius}, New Fahrenheit value: {C1.to_fahrenheit}")
