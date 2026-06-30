@@ -1,0 +1,20 @@
+# Fibonacci sum of even numbers up to a limit
+def Fibonacci_sum(limit):
+  # Validate input to ensure it's a positive integer
+  if not isinstance(limit, int) or limit <= 0:
+    return "Errore: Inserisci un numero intero positivo come limite."
+
+  a, b = 1, 2  # Start with the first two Fibonacci numbers (1 and 2)
+  even_fib_sum = 0 # Initialize sum for even Fibonacci numbers
+
+  while a < limit: # Continue as long as the current Fibonacci number is within the limit
+    if a % 2 == 0: # Check if the current Fibonacci number is even
+      even_fib_sum += a # Add to the sum if it's even
+
+    # Generate the next Fibonacci number in the sequence
+    a, b = b, a + b
+
+  return even_fib_sum
+
+# Calculate the sum of even Fibonacci numbers below 4 million
+print(Fibonacci_sum(4000000))
