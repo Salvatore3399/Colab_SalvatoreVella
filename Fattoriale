@@ -1,0 +1,14 @@
+def fattoriale(n):
+  if not isinstance(n, int) or n < 0:
+    return "Dammi un numero intero maggiore o uguale a 0"
+
+  if n == 0:
+    return 1
+  risultato = 1
+  numero_corrente = n
+  while numero_corrente > 0:
+    risultato *= numero_corrente
+    numero_corrente -= 1
+  return risultato
+
+print(fattoriale(10))
