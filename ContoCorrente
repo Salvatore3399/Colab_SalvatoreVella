@@ -1,0 +1,67 @@
+class ContoCorrente:
+
+  #Inizializzo l'istanza della classe settando il saldo a 0 per default
+  def __init__(self, saldo_iniziale=0, saldo_minimo=-500):
+    self._saldo = saldo_iniziale  # Internal attribute
+    # Inizializzo la mia variabile SALDO_MINIMO al valore di limite consentito del saldo corrente per questa istanza
+    self.SALDO_MINIMO = saldo_minimo
+
+  @property
+  def saldo(self):
+    """Getter per il saldo attuale."""
+    return self._saldo
+
+  @saldo.setter
+  def saldo(self, nuovo_saldo):
+    """Setter per il saldo, con controllo sul SALDO_MINIMO."""
+    if nuovo_saldo < self.SALDO_MINIMO:
+      raise ValueError(f"Il saldo non può scendere sotto la soglia di {self.SALDO_MINIMO}€.")
+    self._saldo = nuovo_saldo
+
+  def deposita(self, importo):
+    if importo > 0:
+      try:
+        self.saldo += importo # Richiama il setter
+        print(f"Depositato: {importo}€. Nuovo saldo: {self.saldo}€")
+      except ValueError as e:
+        print(f"Errore durante il deposito: {e}") # Should not happen with positive deposits unless initial balance was already bad
+    else:
+      print("L'importo da depositare deve essere positivo.")
+
+  def preleva(self, importo):
+    if importo > 0:
+      try:
+        self.saldo -= importo # This will call the setter
+        print(f"Prelevato: {importo}€. Nuovo saldo: {self.saldo}€")
+      except ValueError:
+        print(f"Fondi insufficienti. Saldo attuale: {self.saldo}€, limite: {self.SALDO_MINIMO}€")
+    else:
+      print("L'importo da prelevare deve essere positivo.")
+
+# Esempio di utilizzo con limiti di saldo diversi
+print("\n--- Esempio con limiti diversi ---")
+conto1 = ContoCorrente(saldo_iniziale=100, saldo_minimo=-1000)
+conto2 = ContoCorrente(saldo_iniziale=50, saldo_minimo=-100)
+
+print(f"Conto 1: Saldo iniziale {conto1.saldo}€, Limite {conto1.SALDO_MINIMO}€")
+print(f"Conto 2: Saldo iniziale {conto2.saldo}€, Limite {conto2.SALDO_MINIMO}€")
+
+conto1.preleva(1100) # Dovrebbe fallire per conto1
+conto2.preleva(100)  # Dovrebbe fallire per conto2 (limite -100)
+
+conto1.preleva(150) # Dovrebbe riuscire per conto1
+conto2.deposita(200) # Dovrebbe riuscire per conto2
+
+class ContoPremium(ContoCorrente):
+  def __init__(self, saldo_iniziale=0, saldo_minimo=-2000):
+    super().__init__(saldo_iniziale, saldo_minimo)
+
+# Esempio di utilizzo di ContoPremium
+print("\n--- Esempio ContoPremium ---")
+conto_premium = ContoPremium(saldo_iniziale=500)
+print(f"Conto Premium: Saldo iniziale {conto_premium.saldo}€, Limite {conto_premium.SALDO_MINIMO}€")
+
+conto_premium.preleva(2000) # Dovrebbe riuscire, saldo 500 - 2000 = -1500 (entro il limite di -2000)
+conto_premium.preleva(1000) # Dovrebbe fallire, saldo -1500 - 1000 = -2500 (sotto il limite di -2000)
+conto_premium.deposita(1000)
+print(f"Conto Premium dopo deposito: {conto_premium.saldo}€")
