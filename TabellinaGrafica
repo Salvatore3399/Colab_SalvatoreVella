@@ -1,0 +1,61 @@
+def tabellina_grafica(n):
+    # Input validation
+    if (type(n)!=int) or (n <= 0):
+        return "Errore: Inserisci un numero intero positivo per la tabellina."
+
+    # Calculate the maximum product to determine cell width for formatting
+    max_product = n * n
+    cell_width = len(str(max_product)) # Width needed for numbers in cells
+
+    # Determine width for the first 'x' cell in the header
+    # It should be at least as wide as 'x' itself, or the calculated cell_width
+    header_cell_width = max(cell_width, len('x'))
+
+    # --- Print Header Line (top border) ---
+    # Start with the separator for the 'x' cell
+    header_line = '+' + '-' * header_cell_width + '+'
+    col_num_for_line = 1
+    while col_num_for_line <= n:
+        header_line += '-' * (cell_width) + '+' # Add separator for each column
+        col_num_for_line += 1
+    print(header_line)
+
+    # --- Print Header Content (row numbers) ---
+    # Start with 'x' in the first cell
+    header_content = '|' + 'x'.center(header_cell_width) + '|'
+    col_num_for_content = 1
+    while col_num_for_content <= n:
+        header_content += str(col_num_for_content).center(cell_width) + '|'
+        col_num_for_content += 1
+    print(header_content)
+
+    # --- Print Separator Line after header ---
+    print(header_line)
+
+    # --- Print Table Rows ---
+    row_num = 1
+    while row_num <= n:
+        # Start with the current row number
+        row_content = '|' + str(row_num).center(header_cell_width) + '|'
+        col_num = 1
+        while col_num <= n:
+            product = row_num * col_num
+            row_content += str(product).center(cell_width) + '|'
+            col_num += 1
+        print(row_content)
+
+        # Print separator line after each data row
+        print(header_line)
+
+        row_num += 1
+
+# Esempi di utilizzo:
+#tabellina_grafica(1)
+#print("\n") # Add a newline for better separation in output
+#tabellina_grafica(5)
+#print("\n")
+#tabellina_grafica(10)
+#print("\n")
+#tabellina_grafica(0) # Test errore
+#print("\n")
+#tabellina_grafica("tre") # Test errore
