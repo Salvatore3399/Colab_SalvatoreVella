@@ -1,0 +1,8 @@
+def crea_moltiplicatore(fattore):
+  def moltiplica(numero):
+    return numero*fattore
+  return moltiplica
+doppio=crea_moltiplicatore(2)
+triplo=crea_moltiplicatore(3)
+print(doppio(5))
+print(triplo(5))
