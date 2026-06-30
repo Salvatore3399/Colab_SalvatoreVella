@@ -1,0 +1,16 @@
+#Trova massimo senza usare max() data una lista
+def trova_massimo(lista):
+    if not lista:
+        return "Errore: La lista è vuota"
+
+    massimo = lista[0]
+    for elemento in lista:
+        if elemento > massimo:
+            massimo = elemento
+    return massimo
+
+L=[1,2,3,4,5]
+print(f"Il massimo nella lista {L} è: {trova_massimo(L)}")
+
+L_vuota=[]
+print(f"Il massimo nella lista {L_vuota} è: {trova_massimo(L_vuota)}")
