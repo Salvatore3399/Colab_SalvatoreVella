@@ -1,0 +1,10 @@
+def conta_vocali(testo):
+  contatore=0
+  vocali = "aeiou"
+  for carattere in testo:
+    if carattere in vocali:
+      contatore += 1
+  return contatore
+
+print(conta_vocali("Ciao Mondo"))
+print(conta_vocali("Python Programming"))
