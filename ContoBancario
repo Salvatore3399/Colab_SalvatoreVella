@@ -1,0 +1,18 @@
+#crea una classe conto bancario con proprietà Titolare e Saldo, aggiungi un metodo deposita che accetta un importo che va ad aumentare il saldo e stampa il nuovo saldo
+#aggiungi al conto bancario un metodo preleva che sottrae dal saldo solo se ci sono soldi sufficienti altrimenti stampa fondi insufficienti
+class ContoBancario():
+  def __init__(self, Titolare, Saldo):
+    self.Titolare = Titolare
+    self.Saldo = Saldo
+  def deposita(self, importo):
+    self.Saldo += importo
+    return self.Saldo
+  def preleva(self, importo):
+    if self.Saldo < importo:
+      print('Fondi insufficienti')
+    self.Saldo = (self.Saldo - importo) if (self.Saldo >= importo) else self.Saldo
+    return self.Saldo
+
+P1 = ContoBancario('Salvo', 1000)
+P1.deposita(500)
+print(P1.preleva(1600))
