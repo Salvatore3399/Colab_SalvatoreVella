@@ -1,0 +1,51 @@
+class Prodotto:
+  def __init__(self, nome, prezzo, categoria):
+    if not isinstance(nome, str) or not nome.strip():
+      raise ValueError("Il nome del prodotto deve essere una stringa non vuota.")
+    if not isinstance(prezzo, (int, float)) or prezzo < 0:
+      raise ValueError("Il prezzo del prodotto deve essere un numero positivo.")
+    if not isinstance(categoria, str) or not categoria.strip():
+      raise ValueError("La categoria del prodotto deve essere una stringa non vuota.")
+
+    self.nome = nome.strip()
+    self.prezzo = float(prezzo)
+    self.categoria = categoria.strip()
+
+  def __str__(self):
+    return f"{self.nome} [{self.categoria}] --- {self.prezzo:.2f} €"
+
+  def __repr__(self):
+    return f"Prodotto('{self.nome}', {self.prezzo}, '{self.categoria}')"
+
+  def __eq__(self, other):
+    if not isinstance(other, Prodotto):
+      return NotImplemented
+    return self.nome == other.nome and self.categoria == other.categoria
+
+  def __lt__(self, other):
+    if not isinstance(other, Prodotto):
+      return NotImplemented
+    return self.prezzo < other.prezzo
+
+  def sconta(self, percentuale):
+    if not isinstance(percentuale, (int, float)) or not (0 <= percentuale <= 100):
+      raise ValueError("La percentuale di sconto deve essere un numero tra 0 e 100.")
+
+    sconto = self.prezzo * (percentuale / 100)
+    self.prezzo -= sconto
+    return self.prezzo
+
+p1 = Prodotto('Laptop', 899.99, 'Elettronica')
+p2 = Prodotto('Mouse', 29.99, 'Elettronica')
+p3 = Prodotto('Laptop', 899.99, 'Elettronica')
+
+print(p1)                       # Laptop [Elettronica] - 899.99€
+print(repr(p2))                 # Prodotto('Mouse', 29.99, 'Elettronica')
+print(p1 == p3)                 # True
+print(p1 == p2)                 # False
+
+prodotti = [p1, p2]
+for p in sorted(prodotti):
+  print(p)                      # prima Mouse, poi Laptop (ordine per prezzo)
+
+print(p1.sconta(10))            # 809.991
