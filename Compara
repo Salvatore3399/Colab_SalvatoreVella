@@ -1,0 +1,12 @@
+#dai in pasto a una funzione un valore e determina se x è piccolo, medio o grande
+
+def compara(x):
+  if x<5:
+    return("Il numero inserito è piccolo")
+  elif 5 <= x <= 10: # Corrected condition
+    return("Il numero inserito è di media dimensione")
+  elif x>10:
+
+    return("Il numero inserito è grande")
+
+print(compara(5)) # Corrected function call
