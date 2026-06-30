@@ -1,0 +1,15 @@
+# i=ore
+# j=minuti
+
+i=0 #Inizializza ore
+while (i<24):
+  # Print the current hour, formatted to two digits
+  print(f"{i:02d}")
+
+  j=0 # resetta i minuti
+  while (j<60):
+    formatta_minuti = f"{j:02d}"
+    formatta_ore = f"{i:02d}"
+    print(f"{formatta_minuti}:{formatta_ore}")
+    j+=1
+  i+=1
