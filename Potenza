@@ -1,0 +1,21 @@
+def potenza(n,e):
+  # Gestisce il caso di esponente negativo (opzionale, ma buona pratica)
+  if e < 0:
+    return "Errore: l'esponente non può essere negativo per questa implementazione"
+  # Se l'esponente è 0, qualsiasi numero (tranne 0^0 che è un caso speciale) elevato a 0 è 1.
+  if e == 0:
+    return 1
+
+  # Calcola la potenza
+  risultato = 1
+  i = 0
+  while i < e: # Il ciclo deve eseguire 'e' moltiplicazioni
+    risultato *= n
+    i += 1
+  return risultato
+
+# Esempi di utilizzo:
+print(f"2 elevato a 4 è: {potenza(2,4)}")
+print(f"5 elevato a 0 è: {potenza(5,0)}")
+print(f"3 elevato a 3 è: {potenza(3,3)}")
+print(f"2 elevato a -1 è: {potenza(2,-1)}")
