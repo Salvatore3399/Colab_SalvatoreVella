@@ -1,0 +1,83 @@
+class Contatto:
+  def __init__(self, nome, cognome, telefono, email):
+    self.nome = nome
+    self.cognome = cognome
+    self.telefono = telefono
+    self.email = email
+
+  def __str__(self):
+    return f"{self.nome} {self.cognome} | {self.telefono} | {self.email}"
+
+  def __repr__(self):
+    return f"Contatto('{self.nome}', '{self.cognome}', '{self.telefono}', '{self.email}')"
+
+  def __eq__(self, other):
+    if not isinstance(other, Contatto):
+      return NotImplemented
+    return self.nome == other.nome and self.cognome == other.cognome and self.telefono == other.telefono
+
+  def nome_completo(self):
+    return f"{self.nome} {self.cognome}"
+
+class Rubrica:
+  def __init__(self):
+    self.contatti = []
+
+  def aggiungi(self, contatto):
+    if contatto not in self.contatti:
+      self.contatti.append(contatto)
+      print(f"Contatto '{contatto.nome_completo()}' aggiunto.")
+    else:
+      print(f"Contatto '{contatto.nome_completo()}' già presente.")
+
+  def rimuovi(self, nome, cognome):
+    contatti_da_rimuovere = []
+    for contatto in self.contatti:
+      if contatto.nome.lower() == nome.lower() and contatto.cognome.lower() == cognome.lower():
+        contatti_da_rimuovere.append(contatto)
+
+    if contatti_da_rimuovere:
+      for contatto in contatti_da_rimuovere:
+        self.contatti.remove(contatto)
+        print(f"Contatto '{contatto.nome_completo()}' rimosso.")
+    else:
+      print(f"Contatto '{nome} {cognome}' non trovato.")
+
+  def cerca(self, testo):
+    risultati = []
+    testo_lower = testo.lower()
+    for contatto in self.contatti:
+      if testo_lower in contatto.nome.lower() or testo_lower in contatto.cognome.lower():
+        risultati.append(contatto)
+    return risultati
+
+  def mostra_tutti(self):
+    if not self.contatti:
+      print("La rubrica è vuota.")
+      return
+    print("--- Contatti nella Rubrica ---")
+    for i, contatto in enumerate(self.contatti):
+      print(f"{i+1}. {contatto}")
+    print("------------------------------")
+
+  def __len__(self):
+    return len(self.contatti)
+
+c1 = Contatto('Mario', 'Rossi', '333-1234567', 'mario@email.it')
+c2 = Contatto('Anna', 'Rossi', '347-9876543', 'anna@email.it')
+c3 = Contatto('Luca', 'Bianchi', '320-1112233', 'luca@email.it')
+
+r = Rubrica ()
+r.aggiungi (c1)
+r.aggiungi (c2)
+r.aggiungi (c3)
+r.aggiungi(c1)
+
+print(len(r))
+r.mostra_tutti ()
+
+risultati = r.cerca('rossi')
+print (f'Trovati: {len(risultati)}')
+
+r.rimuovi('Luca', 'Bianchi')
+print(len(r))
