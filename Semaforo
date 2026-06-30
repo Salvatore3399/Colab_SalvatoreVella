@@ -1,0 +1,47 @@
+class Semaforo:
+  def __init__(self):
+    self.sequenza = ["Verde", "Giallo", "Rosso"]
+    self._colore_attuale = "Verde" # Internal attribute
+    self.numero_cambi = 0
+
+  @property
+  def colore_attuale(self):
+    """Getter per colore_attuale"""
+    # print(f"Accesso colore attuale: {self._colore_attuale}")
+    return self._colore_attuale
+
+  @colore_attuale.setter
+  def colore_attuale(self, nuovo_colore):
+    """Setter per colore_attuale"""
+    if nuovo_colore not in self.sequenza:
+      print(f"Errore: '{nuovo_colore}' non è un colore valido per il semaforo.")
+      return
+    # print(f"Impostazione colore attuale a: {nuovo_colore}")
+    self._colore_attuale = nuovo_colore
+
+  def avanza(self):
+    indice_attuale = self.sequenza.index(self._colore_attuale) # Use internal attribute for index lookup
+    prossimo_indice = (indice_attuale + 1) % len(self.sequenza)
+    self.colore_attuale = self.sequenza[prossimo_indice] # This will now call the setter
+    self.numero_cambi += 1
+
+  def puoi_passare(self):
+    return self.colore_attuale == "Verde"
+
+  def stato(self):
+    print(f"---STATO SEMAFORO---")
+    print(f"Colore: {self.colore_attuale}") # Access via property
+    print(f"Cambi: {self.numero_cambi}")
+
+s = Semaforo()
+s.stato()
+print(s.puoi_passare())
+s.avanza()
+s.stato()
+print(s.puoi_passare())
+s.avanza()
+s.stato()
+# Demonstrate setting the property directly
+s.colore_attuale = "Verde" # This calls the setter
+s.stato()
+print(f"Accesso diretto al colore: {s.colore_attuale}") # Access via getter
