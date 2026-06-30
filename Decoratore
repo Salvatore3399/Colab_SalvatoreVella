@@ -1,0 +1,23 @@
+from time import perf_counter
+
+def funzione_decoratore(func):
+
+  def wrapper(*args, **kwargs):
+    start_time = perf_counter()
+    print("--Inizio esecuzione--")
+    result = func(*args, **kwargs) # Esegui la funzione decorata e cattura il risultato
+    end_time = perf_counter()
+    duration = end_time - start_time
+    print(f"--Fine esecuzione-- in {duration:.4f} secondi")
+    return result # Restituisci il risultato della funzione originale
+
+  return wrapper
+
+@funzione_decoratore
+def tempo(): # Semplificato per non accettare perf_counter come argomento
+  print("Esecuzione della funzione 'tempo'...")
+  # Simula un po' di lavoro
+  for _ in range(1000000):
+    pass
+
+tempo()
