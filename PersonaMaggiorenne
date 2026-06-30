@@ -1,0 +1,20 @@
+#aggiungi alla classe persona un metodo "è_maggiorenne" che restituisce True se età >=18 altrimenti False. Testalo con due persone differenti
+
+class Persona():
+  def __init__(self, nome, età):
+    self.nome = nome
+    self.età = età
+    print(f'Il mio nome è {nome} e la mia età è {età}')
+
+  def saluta(self):
+    print(f'Ciao, sono {self.nome} e ho {self.età} anni')
+
+  def è_maggiorenne(self):
+    return self.età >=18
+
+P1 = Persona('Mario', 30)
+P1.saluta()
+P2 = Persona('Carlo', 28)
+P3 = Persona('Luigi', 17)
+print(f"Carlo è maggiorenne? {P2.è_maggiorenne()}")
+print(f"Luigi è maggiorenne? {P3.è_maggiorenne()}")
