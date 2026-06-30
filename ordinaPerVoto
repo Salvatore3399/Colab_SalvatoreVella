@@ -1,0 +1,12 @@
+// Crea una lista di studenti e ordinali per voto dal più piccolo al più grande
+
+studenti=[("Alice",8.5),("Bob",6.0),("Giulia",9.75)]
+studenti.sort(key=lambda x: x[1])
+
+print("-" * 20)
+print(f"{"Nome":<10} {"Voto":>5}")
+print("-" * 20)
+
+for nome, voto in studenti:
+    print(f"{nome:<10} {voto:>5.2f}")
+print("-" * 20)
