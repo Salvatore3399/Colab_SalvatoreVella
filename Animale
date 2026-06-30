@@ -1,0 +1,34 @@
+class Animale:
+  def __init__(self,nome):
+    self.nome = nome
+  def verso(self):
+    raise NotImplementedError(
+        "Ogni animale deve definire il proprio verso"
+    )
+
+  def __str__(self):
+    return f"Animale: {self.nome}"
+
+class Cane(Animale):
+  def verso(self):
+    return f"{self.nome} dice Woof!"
+
+class Gatto(Animale):
+  def verso(self):
+    return f"{self.nome} dice Miao!"
+
+class Mucca(Animale):
+  def verso(self):
+    return f"{self.nome} dice Muuu!"
+
+def fai_emettere_versi(animali):
+  for animale in animali:
+    print(animale.verso())
+
+animali = [
+    Cane("Bau"),
+    Gatto("Micio"),
+    Mucca("Luna")
+]
+
+fai_emettere_versi(animali)
