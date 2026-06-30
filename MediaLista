@@ -1,9 +1,9 @@
 def media_lista(n):
-  if numeri<1:
+  if not n: # Controlla se la lista è vuota
     return 0
   somma=0
-  for n in n:
-    somma+=n
+  for elemento in n: # Usa un nome diverso per l'elemento del ciclo per evitare di ridefinire 'n'
+    somma+=elemento
   return somma/len(n)
 
 lista=[1,2,3,4,5]
