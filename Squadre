@@ -1,0 +1,20 @@
+class Squadre():
+  def __init__(self,nome,città,numero_giocatori=20):
+    self.nome=nome
+    self.città=città
+    self.numero_giocatori=numero_giocatori
+
+  def presentazione(self):
+    return f"Sono la squadra di nome {self.nome} e sono della città di {self.città}"
+
+  def acquista(self,aquistati):
+    self.aquistati=aquistati
+    self.numero_giocatori+=aquistati
+    return f"La squadra {self.nome} ha aquistato {self.aquistati} giocatori e adesso ha in totale {self.numero_giocatori} giocatori"
+
+S1 = Squadre("Inter","Milano")
+print(S1.presentazione())
+S1.acquista(5)
+S2 = Squadre("Palermo", "Palermo")
+print(S2.numero_giocatori)
+S2.acquista(10)
