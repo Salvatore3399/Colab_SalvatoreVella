@@ -1,0 +1,13 @@
+def find_largest_palindrome_product():
+  largest_palindrome = 0
+  # Iterate through all possible pairs of 3-digit numbers
+  for i in range(100, 1000):
+    for j in range(100, 1000):
+      product = i * j
+      # Convert the product to a string and check if it's a palindrome
+      if str(product) == str(product)[::-1]:
+        if product > largest_palindrome:
+          largest_palindrome = product
+  return largest_palindrome
+
+print(f"Il più grande palindromo fatto dal prodotto di due numeri a 3 cifre è: {find_largest_palindrome_product()}")
