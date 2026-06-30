@@ -1,0 +1,15 @@
+class Chitarre():
+  def __init__(self, nome, marca, numero_corde=6):
+    self.nome=nome
+    self.marca=marca
+    self.numero_corde=numero_corde
+
+  def __str__(self):
+    return f"Chitarra: {self.nome}, Marca: {self.marca}, Corde: {self.numero_corde}"
+
+C1=Chitarre('Stratocaster','Fender')
+C1.numero_corde = 7
+print(C1)
+C2=Chitarre('Stratocaster','Fender')
+print(C2)
+print(C1)
