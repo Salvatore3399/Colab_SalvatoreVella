@@ -1,0 +1,16 @@
+class Lavoratore():
+  def __init__(self, nome, cognome, città, ruolo, stipendio):
+    self.nome=nome
+    self.cognome=cognome
+    self.città=città
+    self.ruolo=ruolo
+    self.stipendio=stipendio
+
+  def stipendio_rimanente(self, spesa):
+    self.spesa=spesa
+    self.stipendio-=self.spesa
+    return f"Lo stipendio rimanente del lavoratore {self.nome} è: {self.stipendio}"
+
+L1 = Lavoratore("Mario", "Bros", "Palermo", "Idraulico", 2000)
+L1.stipendio_rimanente(1000)
+L1.stipendio_rimanente(1000)
