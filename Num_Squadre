@@ -1,0 +1,12 @@
+class Squadra():
+  n_squadre=0
+  def __init__(self,nome,città):
+    self.nome=nome
+    self.città=città
+    Squadra.n_squadre+=1
+S1=Squadra("Palermo","Palermo")
+print(S1.nome,S1.città,Squadra.n_squadre)
+S2=Squadra("Milan","Milano")
+print(S2.nome,S2.città,Squadra.n_squadre)
+S3=Squadra("Torino","Torino")
+print(S3.nome,S3.città,Squadra.n_squadre)
