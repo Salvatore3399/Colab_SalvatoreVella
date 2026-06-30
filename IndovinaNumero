@@ -1,0 +1,15 @@
+#indovina il numero
+#dobbiamo fornire un numero segreto e devo trovarlo con un ciclo
+
+def trova_numero(n):
+  i=0
+  if n<0:
+    print("Errore: il numero deve essere maggiore a 0")
+  else:
+    contatore=0
+    while (i<n):
+      #print(i)
+      i+=1
+      contatore=i
+  return print("Ho trovato il numero al tentativo " + str(contatore))
+trova_numero(10)
