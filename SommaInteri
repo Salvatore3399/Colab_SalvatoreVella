@@ -1,0 +1,9 @@
+def somma_interi(n):
+  i=1
+  somma=0
+  while i<=n:
+    somma+=i
+    i+=1
+  return somma
+print(somma_interi(10))
+print(somma)
