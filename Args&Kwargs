@@ -1,0 +1,14 @@
+def esempio(*args):
+  print(args)
+
+esempio(1,2,3)
+
+def esempio2(**kwargs):
+  print(kwargs)
+
+esempio2(colore="verde")
+
+def prova(*args, **kwargs):
+  print(args,kwargs)
+
+prova(1,2,3,4, colore="verde")
