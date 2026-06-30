@@ -1,0 +1,10 @@
+def calcola_bmi(peso: float, altezza: float, nome: str) -> str:
+  bmi = peso / (altezza ** 2)
+  categoria = (
+      "Sottopeso" if bmi < 18.5 else
+      "Normopeso" if bmi < 25 else
+      "Sovrappeso"
+  )
+
+  return f"{nome}:{bmi:.1f}" + f"({categoria})"
+calcola_bmi(60, 1.80, "Salvo")
