@@ -1,0 +1,15 @@
+def decorator(func):
+  def wrapper(*args,**kwargs):
+    print("*** Inizio decorazione ***")
+    risultato = func(*args,**kwargs)
+    print("*** Fine decorazione ***")
+    return risultato
+  return wrapper
+
+@decorator
+def albero(colore):
+  print(f"L'albero ha le foglie {colore}")
+  return colore.upper()
+
+output = albero("verde")
+print(output)
