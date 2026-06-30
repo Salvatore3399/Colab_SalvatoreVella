@@ -1,0 +1,28 @@
+def tabellina(n):
+  if (type(n)!=int):
+    return ("Errore: Il numero non è un intero")
+  if (n<0):
+    return ("Errore: Il numero è negativo")
+  row = ""
+  head = ""
+
+  i=1 # i=riga, j=cella
+  while (i<=n):
+    j=1
+    while(j<=n):
+      val = str(i*j)
+      max_spazi_cella = len(str(n**2)) - len(val)
+      if i==1:
+        max_spazi_head = len(str(n**2)) - len(str(j))
+        head += "_" * max_spazi_head + str(j) + " "
+      if j==1:
+        row += "_" * max_spazi_cella + val
+      row += "|" + " " * max_spazi_cella + val
+      if j==n:
+        row += "\n"
+      j+=1
+    i+=1
+  print(" " * (len(str(n**3)) -1) + head)
+  return row
+
+print(tabellina(10))
