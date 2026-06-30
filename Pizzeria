@@ -1,0 +1,40 @@
+#Pizzeria
+class Pizza:
+  def __init__(self, nome, prezzo, ingredienti=None):
+    self.nome = nome
+    self.prezzo = prezzo
+    self.ingredienti = ingredienti if ingredienti is not None else []
+
+  def aggiungi_ingredienti(self, ingrediente):
+    self.ingredienti.append(ingrediente.lower())
+    print(f"Aggiunto: { ingrediente }")
+
+  def rimuovi_ingrediente(self, ingrediente):
+    ingrediente = ingrediente.lower()
+    if ingrediente in self.ingredienti:
+      self.ingredienti.remove(ingrediente)
+      print(f"Rimosso: { ingrediente }")
+    else:
+      print(f"Avviso: l'ingrediente '{ ingrediente }' non è presente sulla pizza { self.nome }.")
+
+  def presenta(self):
+    print(f" { self.nome }, prezzo { self.prezzo:.2f} ingredienti: { self.ingredienti }")
+
+  def is_vegetariana(self):
+    non_vegetariani = ['prosciutto', 'salame', 'tonno']
+    for ing in self.ingredienti:
+      if ing.lower() in non_vegetariani:
+        return False
+    return True
+
+P1 = Pizza('Margherita', 5.00, ['pomodoro', 'mozzarella', 'basilico'])
+P2 = Pizza('Napoli', 7.00, ['pomodoro', 'mozzarella', 'tonno'])
+
+P1.aggiungi_ingredienti('origano')
+P2.rimuovi_ingrediente('pomodoro')
+
+P1.presenta()
+
+P2.is_vegetariana()
+P2.rimuovi_ingrediente('tonno')
+print(P2.is_vegetariana())
