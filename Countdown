@@ -1,0 +1,10 @@
+def countdown(n):
+  if (type(n)!=int):
+    return ("Errore: Il numero non è un intero")
+  if (n<0):
+    return ("Errore: Il numero è negativo")
+  while(n>=1):
+    print(n)
+    n-=1
+  return n
+print(countdown(5))
