@@ -1,0 +1,47 @@
+import random
+random.seed(42) #per i risultati riproducibili nei test
+
+class Dado:
+  def __init__(self, facce=6):
+    if not isinstance(facce, int) or facce < 1:
+      raise ValueError("Il numero di facce deve essere un intero positivo.")
+    self.facce = facce
+    self.valore = 0  # Inizia a 0
+
+  def lancia(self):
+    self.valore = random.randint(1, self.facce)
+    return self.valore
+
+  def __str__(self):
+    return f"Dado a {self.facce} facce --- ultimo valore: {self.valore}"
+
+  def __int__(self):
+    return self.valore
+
+  def __add__(self, other):
+    if isinstance(other, Dado):
+      return self.valore + other.valore
+    elif isinstance(other, (int, float)):
+      return self.valore + other
+    return NotImplemented
+
+  def __radd__(self, other):
+    return self.__add__(other)
+
+  def __lt__(self, other):
+    if isinstance(other, Dado):
+      return self.valore < other.valore
+    elif isinstance(other, (int, float)):
+      return self.valore < other
+    return NotImplemented
+
+d6 = Dado()
+d6.lancia()
+print(d6)             #Dado a 6 facce --- ultimo valore: 1
+print(int(d6))        # 1
+
+d8 = Dado(8)
+d8.lancia()
+
+print(d6 + d8)        #somma dei due valori (es. 1 + 7 = 8)
+print(d6 < d8)        #True se d6 ha valore minore
