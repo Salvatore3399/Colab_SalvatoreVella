@@ -1,0 +1,28 @@
+def somma_pari(n):
+  somma = 0  # Inizializza somma qui, così è sempre definita
+
+  # Aggiungi una validazione per l'input
+  if not isinstance(n, int) or n < 0:
+    print("Errore: Inserisci un numero intero non negativo.")
+    return 0
+
+  if n < 2: # Se n è 0 o 1, non ci sono numeri pari da sommare (a partire da 2)
+    print("Nessun numero pari da sommare (n deve essere >= 2).")
+    return somma # somma è 0 in questo caso
+
+  # Il ciclo per la somma dovrebbe essere qui, fuori dal primo 'if'
+  i = 2 # Inizia a controllare dal primo numero pari
+  while i <= n: # Somma fino a n (incluso)
+    if i % 2 == 0:
+      # print(i) # Rimosso per un output più pulito, puoi decommentare per debug
+      somma = i + somma
+    i += 1
+  return somma
+
+# Esempi di utilizzo:
+print(f"Somma pari fino a 10: {somma_pari(10)}") # Expected: 2+4+6+8+10 = 30
+print(f"Somma pari fino a 1: {somma_pari(1)}")   # Expected: prints message, returns 0
+print(f"Somma pari fino a 0: {somma_pari(0)}")   # Expected: prints message, returns 0
+print(f"Somma pari fino a 5: {somma_pari(5)}")   # Expected: 2+4 = 6
+print(f"Somma pari fino a -3: {somma_pari(-3)}") # Expected: prints error message, returns 0
+print(f"Somma pari fino a 'test': {somma_pari('test')}") # Expected: prints error message, returns 0
